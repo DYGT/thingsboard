@@ -444,35 +444,35 @@ export class MenuService {
         icon: 'settings_ethernet'
       }
     );
-    if (authState.edgesSupportEnabled) {
-      sections.push(
-        {
-          id: 'edge_management',
-          name: 'edge.management',
-          type: 'toggle',
-          path: '/edgeManagement',
-          icon: 'settings_input_antenna',
-          pages: [
-            {
-              id: 'edges',
-              name: 'edge.instances',
-              fullName: 'edge.edge-instances',
-              type: 'link',
-              path: '/edgeManagement/instances',
-              icon: 'router'
-            },
-            {
-              id: 'rulechain_templates',
-              name: 'edge.rulechain-templates',
-              fullName: 'edge.edge-rulechain-templates',
-              type: 'link',
-              path: '/edgeManagement/ruleChains',
-              icon: 'settings_ethernet'
-            }
-          ]
-        }
-      );
-    }
+    // if (authState.edgesSupportEnabled) {
+    //   sections.push(
+    //     {
+    //       id: 'edge_management',
+    //       name: 'edge.management',
+    //       type: 'toggle',
+    //       path: '/edgeManagement',
+    //       icon: 'settings_input_antenna',
+    //       pages: [
+    //         {
+    //           id: 'edges',
+    //           name: 'edge.instances',
+    //           fullName: 'edge.edge-instances',
+    //           type: 'link',
+    //           path: '/edgeManagement/instances',
+    //           icon: 'router'
+    //         },
+    //         {
+    //           id: 'rulechain_templates',
+    //           name: 'edge.rulechain-templates',
+    //           fullName: 'edge.edge-rulechain-templates',
+    //           type: 'link',
+    //           path: '/edgeManagement/ruleChains',
+    //           icon: 'settings_ethernet'
+    //         }
+    //       ]
+    //     }
+    //   );
+    // }
     sections.push(
       {
         id: 'features',

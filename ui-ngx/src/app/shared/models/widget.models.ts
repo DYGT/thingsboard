@@ -287,7 +287,11 @@ export interface LegendConfig {
   showMin: boolean;
   showMax: boolean;
   showAvg: boolean;
+  showPositiveAvg: boolean;
+  showNegativeAvg: boolean;
   showTotal: boolean;
+  showPositiveTotal: boolean;
+  showNegativeTotal: boolean;
   showLatest: boolean;
 }
 
@@ -298,7 +302,11 @@ export const defaultLegendConfig = (wType: widgetType): LegendConfig => ({
   showMin: false,
   showMax: false,
   showAvg: wType === widgetType.timeseries,
+  showPositiveAvg: wType ===  widgetType.timeseries,
+  showNegativeAvg: wType ===  widgetType.timeseries,
   showTotal: false,
+  showPositiveTotal: false,
+  showNegativeTotal: false,
   showLatest: false
 });
 
@@ -480,7 +488,11 @@ export interface LegendKeyData {
   min: string;
   max: string;
   avg: string;
+  positiveAvg: string;
+  negativeAvg: string;
   total: string;
+  positiveTotal: string;
+  negativeTotal: string;
   latest: string;
   hidden: boolean;
 }

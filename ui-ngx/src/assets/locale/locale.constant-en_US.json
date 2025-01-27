@@ -3069,6 +3069,8 @@
         "average-option": "Average",
         "total-option": "Total",
         "latest-option": "Latest",
+        "positiveTotal-option": "Total Earnings",
+        "negativeTotal-option":"Total Loss",
         "sort-legend": "Sort datakeys in legend",
         "show-max": "Show max value",
         "show-min": "Show min value",
@@ -3080,6 +3082,8 @@
         "max": "max",
         "avg": "avg",
         "total": "total",
+        "positiveTotal": "total earnings",
+        "negativeTotal":"total loss",
         "latest": "latest",
         "comparison-time-ago": {
             "previousInterval": "(previous interval)",
@@ -4763,6 +4767,7 @@
         "runtime-failed": "<b>Failed:</b> {{message}}",
         "auto-commit-settings-read-only-hint": "Auto-commit feature doesn't work with enabled read-only option in Repository settings."
     },
+    
     "widget": {
         "widget-library": "Widgets library",
         "widget-bundle": "Widgets Bundle",

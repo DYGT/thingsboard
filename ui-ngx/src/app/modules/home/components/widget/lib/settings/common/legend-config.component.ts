@@ -146,8 +146,20 @@ export class LegendConfigComponent implements OnInit, OnDestroy, ControlValueAcc
     if (isDefined(legendConfig.showAvg) && legendConfig.showAvg) {
       showValues.push('average');
     }
+    if (isDefined(legendConfig.showPositiveAvg) && legendConfig.showPositiveAvg) {
+      showValues.push('positiveAvg');
+    }
+    if (isDefined(legendConfig.showNegativeAvg) && legendConfig.showNegativeAvg) {
+      showValues.push('negativeAvg');
+    }
     if (isDefined(legendConfig.showTotal) && legendConfig.showTotal) {
       showValues.push('total');
+    }
+    if (isDefined(legendConfig.showPositiveTotal) && legendConfig.showPositiveTotal) {
+      showValues.push('positiveTotal');
+    }
+    if (isDefined(legendConfig.showNegativeTotal) && legendConfig.showNegativeTotal) {
+      showValues.push('negativeTotal');
     }
     if (isDefined(legendConfig.showLatest) && legendConfig.showLatest) {
       showValues.push('latest');
@@ -159,7 +171,11 @@ export class LegendConfigComponent implements OnInit, OnDestroy, ControlValueAcc
     legendConfig.showMin = showValues.includes('min');
     legendConfig.showMax = showValues.includes('max');
     legendConfig.showAvg = showValues.includes('average');
+    legendConfig.showPositiveAvg = showValues.includes('positiveAvg');
+    legendConfig.showNegativeAvg = showValues.includes('negativeAvg');
     legendConfig.showTotal = showValues.includes('total');
+    legendConfig.showPositiveTotal = showValues.includes('positiveTotal');
+    legendConfig.showNegativeTotal = showValues.includes('negativeTotal');
     legendConfig.showLatest = showValues.includes('latest');
   }
 }

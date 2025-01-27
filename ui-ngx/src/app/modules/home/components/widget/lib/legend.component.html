@@ -22,7 +22,11 @@
     <th *ngIf="legendConfig.showMin === true">{{ 'legend.min' | translate }}</th>
     <th *ngIf="legendConfig.showMax === true">{{ 'legend.max' | translate }}</th>
     <th *ngIf="legendConfig.showAvg === true">{{ 'legend.avg' | translate }}</th>
+    <th *ngIf="legendConfig.showPositiveAvg === true">{{ 'legend.positiveAvg' | translate }}</th>
+    <th *ngIf="legendConfig.showNegativeAvg === true">{{ 'legend.negativeAvg' | translate }}</th>
     <th *ngIf="legendConfig.showTotal === true">{{ 'legend.total' | translate }}</th>
+    <th *ngIf="legendConfig.showPositiveTotal === true">{{ 'legend.positiveTotal' | translate }}</th>
+    <th *ngIf="legendConfig.showNegativeTotal === true">{{ 'legend.negativeTotal' | translate }}</th>
     <th *ngIf="legendConfig.showLatest === true">{{ 'legend.latest' | translate }}</th>
   </tr>
   </thead>
@@ -38,7 +42,11 @@
         <td class="tb-legend-value" *ngIf="legendConfig.showMin === true">{{ legendData.data[legendKey.dataIndex].min }}</td>
         <td class="tb-legend-value" *ngIf="legendConfig.showMax === true">{{ legendData.data[legendKey.dataIndex].max }}</td>
         <td class="tb-legend-value" *ngIf="legendConfig.showAvg === true">{{ legendData.data[legendKey.dataIndex].avg }}</td>
+        <td class="tb-legend-value" *ngIf="legendConfig.showPositiveAvg === true">{{ legendData.data[legendKey.dataIndex].positiveAvg }}</td>
+        <td class="tb-legend-value" *ngIf="legendConfig.showNegativeAvg === true">{{ legendData.data[legendKey.dataIndex].negativeAvg }}</td>
         <td class="tb-legend-value" *ngIf="legendConfig.showTotal === true">{{ legendData.data[legendKey.dataIndex].total }}</td>
+        <td class="tb-legend-value" *ngIf="legendConfig.showPositiveTotal === true">{{ legendData.data[legendKey.dataIndex].positiveTotal }}</td>
+        <td class="tb-legend-value" *ngIf="legendConfig.showNegativeTotal === true">{{ legendData.data[legendKey.dataIndex].negativeTotal }}</td>
         <td class="tb-legend-value" *ngIf="legendConfig.showLatest === true">{{ legendData.data[legendKey.dataIndex].latest }}</td>
       </tr>
     </ng-container>
@@ -71,10 +79,34 @@
         {{ legendData.data[legendKey.dataIndex].avg }}
       </td>
     </tr>
+    <tr class="tb-legend-keys" *ngIf="isRowDirection && legendConfig.showPositiveAvg === true">
+      <td class="tb-legend-type">{{ 'legend.positiveAvg' | translate }}</td>
+      <td class="tb-legend-value" *ngFor="let legendKey of legendKeys()">
+        {{ legendData.data[legendKey.dataIndex].positiveAvg}}
+      </td>
+    </tr>
+    <tr class="tb-legend-keys" *ngIf="isRowDirection && legendConfig.showNegativeAvg === true">
+      <td class="tb-legend-type">{{ 'legend.negativeAvg' | translate }}</td>
+      <td class="tb-legend-value" *ngFor="let legendKey of legendKeys()">
+        {{ legendData.data[legendKey.dataIndex].negativeAvg }}
+      </td>
+    </tr>
     <tr class="tb-legend-keys" *ngIf="isRowDirection && legendConfig.showTotal === true">
       <td class="tb-legend-type">{{ 'legend.total' | translate }}</td>
       <td class="tb-legend-value" *ngFor="let legendKey of legendKeys()">
         {{ legendData.data[legendKey.dataIndex].total }}
+      </td>
+    </tr>
+    <tr class="tb-legend-keys" *ngIf="isRowDirection && legendConfig.showPositiveTotal === true">
+      <td class="tb-legend-type">{{ 'legend.positiveTotal' | translate }}</td>
+      <td class="tb-legend-value" *ngFor="let legendKey of legendKeys()">
+        {{ legendData.data[legendKey.dataIndex].positiveTotal }}
+      </td>
+    </tr>
+    <tr class="tb-legend-keys" *ngIf="isRowDirection && legendConfig.showNegativeTotal === true">
+      <td class="tb-legend-type">{{ 'legend.negativeTotal' | translate }}</td>
+      <td class="tb-legend-value" *ngFor="let legendKey of legendKeys()">
+        {{ legendData.data[legendKey.dataIndex].negativeTotal }}
       </td>
     </tr>
     <tr class="tb-legend-keys" *ngIf="isRowDirection && legendConfig.showLatest === true">

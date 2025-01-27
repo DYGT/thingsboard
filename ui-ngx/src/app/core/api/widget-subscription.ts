@@ -122,6 +122,58 @@ const calculateTotal = (data: DataSet): number => {
   }
 };
 
+const calculatePositiveTotal = (data: DataSet): number => {
+  if (data.length > 0) {
+    let result = 0;
+    data.forEach((dataRow) => {
+      result += Number(dataRow[1])<0?0:Number(dataRow[1]);
+    });
+    return result;
+  } else {
+    return null;
+  }
+};
+
+const calculateNegativeTotal = (data: DataSet): number => {
+  if (data.length > 0) {
+    let result = 0;
+    data.forEach((dataRow) => {
+      result += Number(dataRow[1])>0?0:Number(dataRow[1]);
+    });
+    return result;
+  } else {
+    return null;
+  }
+};
+
+const calculatePositiveAvg = (data: DataSet): number => {
+  if (data.length > 0) {
+    let result = 0;
+    data.forEach((dataRow) => {
+      result += Number(dataRow[1])>0?1:0;
+    });
+    if(result>0)
+    return calculatePositiveTotal(data) / result;
+    else
+    return 0;
+  } else {
+    return null;
+  }
+};
+const calculateNegativeAvg = (data: DataSet): number => {
+  if (data.length > 0) {
+    let result = 0;
+    data.forEach((dataRow) => {
+      result += Number(dataRow[1])>0?0:1;
+    });
+    if(result>0)
+    return calculateNegativeTotal(data) / result;
+    else
+    return 0;
+  } else {
+    return null;
+  }
+};
 const calculateAvg = (data: DataSet): number => {
   if (data.length > 0) {
     return calculateTotal(data) / data.length;
@@ -359,7 +411,11 @@ export class WidgetSubscription implements IWidgetSubscription {
         (this.legendConfig.showMin === true ||
           this.legendConfig.showMax === true ||
           this.legendConfig.showAvg === true ||
+          this.legendConfig.showPositiveAvg === true ||
+          this.legendConfig.showNegativeAvg === true ||
           this.legendConfig.showTotal === true ||
+          this.legendConfig.showPositiveTotal === true ||
+          this.legendConfig.showNegativeTotal === true ||
           this.legendConfig.showLatest === true);
       this.initDataSubscription().subscribe(() => {
           subscriptionSubject.next(this);
@@ -1390,7 +1446,11 @@ export class WidgetSubscription implements IWidgetSubscription {
                   min: null,
                   max: null,
                   avg: null,
+                  positiveAvg:null,
+                  negativeAvg:null,
                   total: null,
+                  positiveTotal:null,
+                  negativeTotal:null,
                   latest: null,
                   hidden: false
                 };
@@ -1623,12 +1683,25 @@ export class WidgetSubscription implements IWidgetSubscription {
     if (this.legendConfig.showAvg) {
       legendKeyData.avg = this.ctx.widgetUtils.formatValue(calculateAvg(data), decimals, units);
     }
+    if (this.legendConfig.showPositiveAvg) {
+      legendKeyData.positiveAvg = this.ctx.widgetUtils.formatValue(calculatePositiveAvg(data), decimals, units);
+    }
+    if (this.legendConfig.showPositiveAvg) {
+      legendKeyData.negativeAvg = this.ctx.widgetUtils.formatValue(calculateNegativeAvg(data), decimals, units);
+    }
     if (this.legendConfig.showTotal) {
       legendKeyData.total = this.ctx.widgetUtils.formatValue(calculateTotal(data), decimals, units);
+    }
+    if (this.legendConfig.showPositiveTotal) {
+      legendKeyData.positiveTotal = this.ctx.widgetUtils.formatValue(calculatePositiveTotal(data), decimals, units);
+    }
+    if (this.legendConfig.showNegativeTotal) {
+      legendKeyData.negativeTotal = this.ctx.widgetUtils.formatValue(calculateNegativeTotal(data), decimals, units);
     }
     if (this.legendConfig.showLatest) {
       legendKeyData.latest = this.ctx.widgetUtils.formatValue(calculateLatest(data), decimals, units);
     }
+    
     this.callbacks.legendDataUpdated(this, detectChanges !== false);
   }
 

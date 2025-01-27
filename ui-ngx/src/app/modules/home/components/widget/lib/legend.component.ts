@@ -44,6 +44,8 @@ export class LegendComponent implements OnInit {
       this.legendConfig.showMax === true ||
       this.legendConfig.showAvg === true ||
       this.legendConfig.showTotal === true ||
+      this.legendConfig.showPositiveTotal === true ||
+      this.legendConfig.showNegativeTotal === true ||
       this.legendConfig.showLatest === true;
 
     this.isHorizontal = this.legendConfig.position === LegendPosition.bottom ||

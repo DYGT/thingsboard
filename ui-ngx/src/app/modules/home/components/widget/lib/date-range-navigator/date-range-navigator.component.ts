@@ -83,6 +83,7 @@ export class DateRangeNavigatorWidgetComponent extends PageComponent implements 
               private viewContainerRef: ViewContainerRef,
               protected store: Store<AppState>) {
     super(store);
+   
   }
 
   ngOnInit(): void {
@@ -101,12 +102,15 @@ export class DateRangeNavigatorWidgetComponent extends PageComponent implements 
     } else {
       const end = new Date();
       end.setHours(23, 59, 59, 999);
+      
+
       this.advancedModel = {
         startDate: _moment((end.getTime() + 1) - this.datesMap[this.settings.initialInterval || 'week'].ts),
         endDate: _moment(end.getTime())
       };
       this.advancedModel.chosenLabel = getFormattedDate(this.advancedModel);
     }
+
     this.selectedStepSize = this.datesMap[this.settings.stepSize || 'day'].ts;
     this.widgetContextTimewindowSync();
     this.dashboardTimewindowChangedSubscription = this.ctx.dashboard.dashboardTimewindowChanged.subscribe(() => {
